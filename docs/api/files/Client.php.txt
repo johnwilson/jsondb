@@ -12,6 +12,9 @@ namespace IBT\JsonDB;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Schema\Blueprint;
 
+// Helper functions
+require_once __DIR__ . '/helpers.php';
+
 /**
 * Client class serves as an entry point to the library.
 * 
@@ -40,19 +43,9 @@ class Client {
 	const T_INDEX = 'jsondb_index';
 
 	/**
-	* Configuration information
-	*
-	* This is set in the jsondb.php file
-	*
-	* @var array
-	*/
-	public static $config;
-
-
-	/**
 	* Configuration manager for Illuminate framework
 	*
-	* @var Illuminate\Database\Capsule\Manager
+	* @var \Illuminate\Database\Capsule\Manager
 	* @see https://laravel.com/api/5.2/Illuminate/Database/Capsule/Manager.html.
 	*/
 	private $capsule;
@@ -60,12 +53,38 @@ class Client {
 	/**
 	* Constructor, creates a new Client
 	*
-	* @return IBT\JsonDB\Client
+	* @param string $host
+	* @param int $port
+	* @param string $database Database name
+	* @param string $username
+	* @param string $password
+	* @param string $charset
+	* @param string $collation
 	*/
-	public function __construct() {
+	public function __construct(
+			$host = 'localhost',
+			$port = 3306,
+			$database = '',
+			$username = '',
+			$password = '',
+			$charset = 'utf8',
+			$collation = 'utf8_unicode_ci'
+		) {
 		// setup db connection
 		$capsule = new Capsule();
-		$capsule->addConnection(self::$config["db"]);
+
+		$config = [
+			'driver' => env('DB_DRIVER', 'mysql'),
+			'host' => env('DB_HOST', $host),
+			'port' => env('DB_PORT', $port),
+			'database' => env('DB_DATABASE', $database),
+			'username' => env('DB_USERNAME', $username),
+			'password' => env('DB_PASSWORD', $password),
+			'charset' => env('DB_CHARSET', $charset),
+			'collation' => env('DB_COLLATION', $collation)
+		];
+
+		$capsule->addConnection($config);
 		$this->capsule = $capsule;
 	}
 

@@ -10,7 +10,7 @@
 namespace IBT\JsonDB\Indexer;
 
 /**
-* Scanner class walkes the JSON object and indexes it values.
+* Scanner class walks the JSON object and indexes it values.
 * 
 * ```php
 * $s = new Scanner();

@@ -35,7 +35,7 @@ class Collection {
 	private $id;
 
 	/**
-	* @var IBT\JsonDB\Client JsonDB Client
+	* @var Client JsonDB Client
 	*/
 	private $client;
 
@@ -44,8 +44,7 @@ class Collection {
 	*
 	* @param int $id Database primary key
 	* @param string $name Collection name
-	* @param IBT\JsonDB\Client $client
-	* @return IBT\JsonDB\Collection
+	* @param Client $client
 	*/
 	function __construct($id, $name, Client $client) {
 		$this->id = $id;

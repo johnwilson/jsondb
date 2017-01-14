@@ -25,40 +25,40 @@
 <path fill="none" stroke="gray" d="M176.135,-240C176.135,-240 243.544,-240 243.544,-240 249.544,-240 255.544,-246 255.544,-252 255.544,-252 255.544,-407 255.544,-407 255.544,-413 249.544,-419 243.544,-419 243.544,-419 176.135,-419 176.135,-419 170.135,-419 164.135,-413 164.135,-407 164.135,-407 164.135,-252 164.135,-252 164.135,-246 170.135,-240 176.135,-240"/>
 <text text-anchor="middle" x="209.839" y="-406.2" font-family="Times,serif" font-size="11.00" fill="gray">Indexer</text>
 </g>
-<!-- \\IBT\\JsonDB\\Indexer\\Exception -->
-<g id="node1" class="node"><title>\\IBT\\JsonDB\\Indexer\\Exception</title>
-<polygon fill="none" stroke="black" points="247.75,-392 171.929,-392 171.929,-356 247.75,-356 247.75,-392"/>
-<text text-anchor="middle" x="209.839" y="-370.7" font-family="Courier,monospace" font-size="11.00">Exception</text>
-</g>
-<!-- \\Exception -->
-<g id="node8" class="node"><title>\\Exception</title>
-<ellipse fill="none" stroke="black" cx="48.417" cy="-239" rx="48.3341" ry="18"/>
-<text text-anchor="middle" x="48.417" y="-234.8" font-family="Times,serif" font-size="14.00" fill="gray">\Exception</text>
-</g>
-<!-- \\IBT\\JsonDB\\Indexer\\Exception&#45;&gt;\\Exception -->
-<g id="edge2" class="edge"><title>\\IBT\\JsonDB\\Indexer\\Exception&#45;&gt;\\Exception</title>
-<path fill="none" stroke="black" d="M171.808,-363.294C161.023,-359.187 149.604,-353.808 140.135,-347 109.106,-324.693 82.1944,-289.447 65.912,-265.328"/>
-<polygon fill="none" stroke="black" points="68.6342,-263.098 60.2056,-256.679 62.7913,-266.953 68.6342,-263.098"/>
+<!-- \\IBT\\JsonDB\\Indexer\\Scanner -->
+<g id="node1" class="node"><title>\\IBT\\JsonDB\\Indexer\\Scanner</title>
+<polygon fill="none" stroke="black" points="241.047,-392 178.631,-392 178.631,-356 241.047,-356 241.047,-392"/>
+<text text-anchor="middle" x="209.839" y="-370.7" font-family="Courier,monospace" font-size="11.00">Scanner</text>
 </g>
 <!-- \\IBT\\JsonDB\\Indexer\\Index -->
 <g id="node2" class="node"><title>\\IBT\\JsonDB\\Indexer\\Index</title>
 <polygon fill="none" stroke="black" points="236.839,-338 182.839,-338 182.839,-302 236.839,-302 236.839,-338"/>
 <text text-anchor="middle" x="209.839" y="-316.7" font-family="Courier,monospace" font-size="11.00">Index</text>
 </g>
-<!-- \\IBT\\JsonDB\\Indexer\\Scanner -->
-<g id="node3" class="node"><title>\\IBT\\JsonDB\\Indexer\\Scanner</title>
-<polygon fill="none" stroke="black" points="241.047,-284 178.631,-284 178.631,-248 241.047,-248 241.047,-284"/>
-<text text-anchor="middle" x="209.839" y="-262.7" font-family="Courier,monospace" font-size="11.00">Scanner</text>
+<!-- \\IBT\\JsonDB\\Indexer\\Exception -->
+<g id="node3" class="node"><title>\\IBT\\JsonDB\\Indexer\\Exception</title>
+<polygon fill="none" stroke="black" points="247.75,-284 171.929,-284 171.929,-248 247.75,-248 247.75,-284"/>
+<text text-anchor="middle" x="209.839" y="-262.7" font-family="Courier,monospace" font-size="11.00">Exception</text>
 </g>
-<!-- \\IBT\\JsonDB\\Client -->
-<g id="node4" class="node"><title>\\IBT\\JsonDB\\Client</title>
-<polygon fill="none" stroke="black" points="237.447,-230 182.232,-230 182.232,-194 237.447,-194 237.447,-230"/>
-<text text-anchor="middle" x="209.839" y="-208.7" font-family="Courier,monospace" font-size="11.00">Client</text>
+<!-- \\Exception -->
+<g id="node8" class="node"><title>\\Exception</title>
+<ellipse fill="none" stroke="black" cx="48.417" cy="-185" rx="48.3341" ry="18"/>
+<text text-anchor="middle" x="48.417" y="-180.8" font-family="Times,serif" font-size="14.00" fill="gray">\Exception</text>
+</g>
+<!-- \\IBT\\JsonDB\\Indexer\\Exception&#45;&gt;\\Exception -->
+<g id="edge2" class="edge"><title>\\IBT\\JsonDB\\Indexer\\Exception&#45;&gt;\\Exception</title>
+<path fill="none" stroke="black" d="M172.128,-256.232C161.576,-252.896 150.204,-248.781 140.135,-244 118.745,-233.845 96.4287,-219.389 79.2826,-207.328"/>
+<polygon fill="none" stroke="black" points="80.9895,-204.246 70.8198,-201.275 76.9171,-209.939 80.9895,-204.246"/>
 </g>
 <!-- \\IBT\\JsonDB\\Collection -->
-<g id="node5" class="node"><title>\\IBT\\JsonDB\\Collection</title>
-<polygon fill="none" stroke="black" points="250.85,-176 168.829,-176 168.829,-140 250.85,-140 250.85,-176"/>
-<text text-anchor="middle" x="209.839" y="-154.7" font-family="Courier,monospace" font-size="11.00">Collection</text>
+<g id="node4" class="node"><title>\\IBT\\JsonDB\\Collection</title>
+<polygon fill="none" stroke="black" points="250.85,-230 168.829,-230 168.829,-194 250.85,-194 250.85,-230"/>
+<text text-anchor="middle" x="209.839" y="-208.7" font-family="Courier,monospace" font-size="11.00">Collection</text>
+</g>
+<!-- \\IBT\\JsonDB\\Filter -->
+<g id="node5" class="node"><title>\\IBT\\JsonDB\\Filter</title>
+<polygon fill="none" stroke="black" points="237.447,-176 182.232,-176 182.232,-140 237.447,-140 237.447,-176"/>
+<text text-anchor="middle" x="209.839" y="-154.7" font-family="Courier,monospace" font-size="11.00">Filter</text>
 </g>
 <!-- \\IBT\\JsonDB\\Exception -->
 <g id="node6" class="node"><title>\\IBT\\JsonDB\\Exception</title>
@@ -67,13 +67,13 @@
 </g>
 <!-- \\IBT\\JsonDB\\Exception&#45;&gt;\\Exception -->
 <g id="edge1" class="edge"><title>\\IBT\\JsonDB\\Exception&#45;&gt;\\Exception</title>
-<path fill="none" stroke="black" d="M171.808,-114.706C161.023,-118.813 149.604,-124.192 140.135,-131 109.106,-153.307 82.1944,-188.553 65.912,-212.672"/>
-<polygon fill="none" stroke="black" points="62.7913,-211.047 60.2056,-221.321 68.6342,-214.902 62.7913,-211.047"/>
+<path fill="none" stroke="black" d="M171.993,-117.21C161.545,-121.295 150.262,-126.037 140.135,-131 120.093,-140.822 98.591,-153.519 81.5534,-164.132"/>
+<polygon fill="none" stroke="black" points="79.6793,-161.176 73.0821,-169.466 83.4092,-167.1 79.6793,-161.176"/>
 </g>
-<!-- \\IBT\\JsonDB\\Filter -->
-<g id="node7" class="node"><title>\\IBT\\JsonDB\\Filter</title>
+<!-- \\IBT\\JsonDB\\Client -->
+<g id="node7" class="node"><title>\\IBT\\JsonDB\\Client</title>
 <polygon fill="none" stroke="black" points="237.447,-68 182.232,-68 182.232,-32 237.447,-32 237.447,-68"/>
-<text text-anchor="middle" x="209.839" y="-46.7" font-family="Courier,monospace" font-size="11.00">Filter</text>
+<text text-anchor="middle" x="209.839" y="-46.7" font-family="Courier,monospace" font-size="11.00">Client</text>
 </g>
 </g>
 </svg>

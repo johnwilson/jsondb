@@ -56,6 +56,7 @@ class Index {
 	* @see http://php.net/manual/en/language.oop5.overloading.php#object.get
 	* @param string $property Name of property to retrieve
 	* @return mixed
+    * @throws Exception if the property isn't found
 	*/
 	public function __get($property) {
 		if(property_exists($this, $property)) {

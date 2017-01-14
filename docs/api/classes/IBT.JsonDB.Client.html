@@ -144,37 +144,37 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1595653081"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-253906394"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1595653081" class="accordion-body collapse in">
+            <div id="namespace-253906394" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2101727981"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-921222337"></a>
                                 <a href="../namespaces/IBT.html" style="margin-left: 30px; padding-left: 0">IBT</a>
             </div>
-            <div id="namespace-2101727981" class="accordion-body collapse ">
+            <div id="namespace-921222337" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-32756538"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1481985594"></a>
                                 <a href="../namespaces/IBT.JsonDB.html" style="margin-left: 30px; padding-left: 0">JsonDB</a>
             </div>
-            <div id="namespace-32756538" class="accordion-body collapse ">
+            <div id="namespace-1481985594" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1540449768"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-597638539"></a>
                                 <a href="../namespaces/IBT.JsonDB.Indexer.html" style="margin-left: 30px; padding-left: 0">Indexer</a>
             </div>
-            <div id="namespace-1540449768" class="accordion-body collapse ">
+            <div id="namespace-597638539" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -256,7 +256,7 @@ $c-&gt;setup();</code></pre>
                                                                     <a href="../classes/IBT.JsonDB.Client.html#method_listCollection" class="">listCollection()</a><br />
                                                             </section>
                             <section class="span4">
-                                                                    <a href="../classes/IBT.JsonDB.Client.html#property_config" class="">$config</a><br />
+                                                                    <em>No public properties found</em>
                                                             </section>
                             <section class="span4">
                                                                     <a href="../classes/IBT.JsonDB.Client.html#constant_T_COLLECTIONS" class="">T_COLLECTIONS</a><br />
@@ -393,41 +393,17 @@ $c-&gt;setup();</code></pre>
                 <aside class="span4 detailsbar"></aside>
             </div>
 
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="property_config" name="property_config" class="anchor"></a>
-            <article class="property">
-                <h3 class="public ">$config</h3>
-                <pre class="signature">$config : array</pre>
-                <p><em>Configuration information</em></p>
-                <p>This is set in the jsondb.php file</p>
-
-                                <h4>Type</h4>
-                array
-                                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                        <dl>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
-                            </table>
-        </aside>
-    </div>
-
                                                                     <div class="row-fluid">
         <div class="span8 content class">
             <a id="property_capsule" name="property_capsule" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$capsule</h3>
-                <pre class="signature">$capsule : \IBT\JsonDB\Illuminate\Database\Capsule\Manager</pre>
+                <pre class="signature">$capsule : \Illuminate\Database\Capsule\Manager</pre>
                 <p><em>Configuration manager for Illuminate framework</em></p>
                 
 
                                 <h4>Type</h4>
-                \IBT\JsonDB\Illuminate\Database\Capsule\Manager
+                \Illuminate\Database\Capsule\Manager
                                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -456,15 +432,51 @@ $c-&gt;setup();</code></pre>
             <article class="method">
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct() : \IBT\JsonDB\IBT\JsonDB\Client</pre>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$host = &#039;localhost&#039;</span>, integer  <span class="argument">$port = 3306</span>, string  <span class="argument">$database = &#039;&#039;</span>, string  <span class="argument">$username = &#039;&#039;</span>, string  <span class="argument">$password = &#039;&#039;</span>, string  <span class="argument">$charset = &#039;utf8&#039;</span>, string  <span class="argument">$collation = &#039;utf8_unicode_ci&#039;</span>) </pre>
                 <p><em>Constructor, creates a new Client</em></p>
                 
 
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$host </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$port </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$database </td>
+                                <td><p>Database name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$username </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$password </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$charset </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$collation </td>
+                                <td></td>
+                            </tr>
+                                            </table>
                 
                 
-                                    <h4>Returns</h4>
-                    \IBT\JsonDB\IBT\JsonDB\Client
-                                    				
+                				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -692,7 +704,7 @@ $c-&gt;setup();</code></pre>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on September 13th, 2016 at 15:48.
+                    on January 15th, 2017 at 00:36.
                 </section>
             </section>
         </section>

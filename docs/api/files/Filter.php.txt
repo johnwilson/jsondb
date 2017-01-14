@@ -29,12 +29,12 @@ namespace IBT\JsonDB;
 class Filter {
 
 	/**
-	* @var IBT\JsonDB\Collection Collection the filter is based on
+	* @var Collection Collection the filter is based on
 	*/
 	private $col;
 
 	/**
-	* @var  Illuminate\Database\Query\Builder Query builder instance
+	* @var  \Illuminate\Database\Query\Builder Query builder instance
 	*/
 	private $query;
 
@@ -51,8 +51,7 @@ class Filter {
 	/**
 	* Constructor, creates a new Filter
 	*
-	* @param IBT\JsonDB\Collection $col Collection the filter is based on
-	* @return IBT\JsonDB\Filter
+	* @param Collection $col Collection the filter is based on
 	*/
 	public function __construct(Collection $col) {
 		$this->fields = array();
