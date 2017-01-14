@@ -1,0 +1,284 @@
+<?php
+
+/**
+ * This file is part of JsonDb library.
+ *
+ * @author John Wilson
+ * @copyright 2016 John Wilson
+ * 
+ */
+
+namespace IBT\JsonDB;
+
+/**
+* Filter class enables the selection of a subset of JSON documents.
+* 
+* The Filter class is acts as a query builder to enable you to search
+* and retrieve a subset of JSON documents. It uses similar/familiar
+* SQL constructs such as 'Where', 'Order By' etc...
+* 
+* ```php
+* $c = new Client();
+* $c->setup();
+* $col = $c->newCollection("users");
+* $col->insert('{"name":"jason bourne", "category":"agent"}');
+* $f = $col->newFilter();
+* $f->where('category', 'in', ['agent'])->run();
+* ```
+*/
+class Filter {
+
+	/**
+	* @var Collection Collection the filter is based on
+	*/
+	private $col;
+
+	/**
+	* @var  \Illuminate\Database\Query\Builder Query builder instance
+	*/
+	private $query;
+
+	/**
+	* @var string Name of the database View
+	*/
+	private $view;
+
+	/**
+	* @var array Fields(or JSON paths) that will be used in the query
+	*/
+	private $fields;
+
+	/**
+	* Constructor, creates a new Filter
+	*
+	* @param Collection $col Collection the filter is based on
+	*/
+	public function __construct(Collection $col) {
+		$this->fields = array();
+		$this->col = $col;
+		
+		$this->view = uniqid('view_');
+		
+		$conn = $this->col->getClient()->connection();
+		$this->query = $conn->table($this->view)
+							->join(Client::T_JSON, 'oid', '=', 'id')
+							->select('doc_id');
+
+	}
+
+	/**
+	* Converts JSON value path into valid column name
+	*
+	* @param string $path JSON path
+	* @return string
+	*/
+	private function sanitizeColName($path) {
+		return str_replace('.', '_', $path);
+	}
+
+	/**
+	* SQL Where statement.
+	*
+	* @param string $path JSON path
+	* @param string $op Operand such as =, <=, >
+	* @param mixed $value Value
+	* @return $this
+	*/
+	public function where($path, $op, $value) {
+		$this->fields[$path] = 1;
+		$this->query->where($this->sanitizeColName($path), $op, $value);
+		return $this;
+	}
+
+	/**
+	* SQL Or Where statement.
+	*
+	* @param string $path JSON path
+	* @param string $op Operand such as =, <=, >
+	* @param mixed $value Value
+	* @return $this
+	*/
+	public function orWhere($path, $op, $value) {
+		$this->fields[$path] = 1;
+		$this->query->orWhere($this->sanitizeColName($path), $op, $value);
+		return $this;
+	}
+
+	/**
+	* SQL Where Between statement.
+	*
+	* @param string $path JSON path
+	* @param array $value Values
+	* @return $this
+	*/
+	public function whereBetween($path, $value) {
+		$this->fields[$path] = 1;
+		$this->query->whereBetween($this->sanitizeColName($path), $value);
+		return $this;
+	}
+
+	/**
+	* SQL Where Not Between statement.
+	*
+	* @param string $path JSON path
+	* @param array $value Values
+	* @return $this
+	*/
+	public function whereNotBetween($path, $value) {
+		$this->fields[$path] = 1;
+		$this->query->whereNotBetween($this->sanitizeColName($path), $value);
+		return $this;
+	}
+
+	/**
+	* SQL Where In statement.
+	*
+	* @param string $path JSON path
+	* @param mixed $value Value(s)
+	* @return $this
+	*/
+	public function whereIn($path, $value) {
+		$this->fields[$path] = 1;
+		$this->query->whereIn($this->sanitizeColName($path), $value);
+		return $this;
+	}
+
+	/**
+	* SQL Where Not In statement.
+	*
+	* @param string $path JSON path
+	* @param mixed $value Value(s)
+	* @return $this
+	*/
+	public function whereNotIn($path, $value) {
+		$this->fields[$path] = 1;
+		$this->query->whereNotIn($this->sanitizeColName($path), $value);
+		return $this;
+	}
+
+	/**
+	* SQL Order By statement.
+	*
+	* @param string $path JSON path
+	* @param string $direction Direction i.e 'asc' or 'desc'
+	* @return $this
+	*/
+	public function orderBy($path, $direction) {
+		$this->fields[$path] = 1;
+		$this->query->orderBy($this->sanitizeColName($path), $direction);
+		return $this;
+	}
+
+	/**
+	* Return View name.
+	*
+	* @return string
+	*/
+	public function viewName() {
+		return $this->view;
+	}
+
+	/**
+	* Make sure JSON paths specified in filter statements exist.
+	* Prevent SQL injection.
+	*
+	* @return array
+    * @throws Exception if the requested JSON path is invalid
+	*/
+	private function validateFields() {
+		// get paths and their data types
+		$conn = $this->col->getClient()->connection();
+		$rows = $conn->table(Client::T_INDEX)
+					->select($conn->raw('distinct(path)'), 'typ')
+					->whereIn('path', array_keys($this->fields))
+					->get();
+
+		// quick comparison. can be changed for a more descriptive
+		// error by comparing values in both lists
+		if(sizeof($rows) != sizeof($this->fields)) {
+			throw new Exception("Error: One or more JSON paths don't exist");
+		}
+
+		return $rows;
+	}
+
+	/**
+	* View query string. This can be used for debugging or caching
+	*
+	* @return string
+	*/
+	public function viewSQL() {
+		$idx_table = Client::T_INDEX;
+
+		// validate fields
+		$fields = $this->validateFields();
+
+		// oid table
+		$main = "(select distinct(oid) from ${idx_table}) as a";
+
+		$select = ['a.oid'];
+
+		$join = [$main];
+
+		$tc = 0; // table counter
+
+		// add fields
+		foreach ($fields as $item) {
+			// get column name
+			$col = Collection::getColumn($item->typ);
+			$field = $item->path;
+
+			$cn = $this->sanitizeColName($field); // column name
+			
+			$t = "select oid, case when path='${field}' then ${col} end as ${cn} ";
+			$t .= "from ${idx_table} having ${cn} is not null";
+			
+			$tc++;
+			$tn = "jn_tbl_" . $tc; // join table alias
+
+			$select[] = "${tn}.${cn}";
+			$join[] = '(' . $t . ") as $tn on a.oid = $tn.oid";
+		}
+
+		$sb = 'create view ' . $this->view .' as ';
+		$sb .= 'select ' . join(",", $select) . ' from ';
+		$sb .= join(" left join ", $join);
+
+		return $sb;
+	}
+
+	/**
+	* View select query string. complements the view function
+	*
+	* @return string
+	*/
+	public function selectSQL() {
+		return $this->query->toSql();
+	}
+
+	/**
+	* Execute the filter
+	*
+	* @return array
+	*/
+	public function run() {
+		$res = [];
+		$conn = $this->col->getClient()->connection();
+		$view = $this->view;
+		$viewSQL = $this->viewSQL();
+		$query = $this->query;
+		
+		$conn->transaction(function() use (&$res, $conn, $view, $viewSQL, $query) {
+			// create view
+			$conn->statement($viewSQL);
+
+			// select data
+			$res = $query->pluck('doc_id');
+
+			// drop view
+			$conn->statement('drop view if exists ' . $view);			
+		});
+		
+		return $res;
+	}
+}

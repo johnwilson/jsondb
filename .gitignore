@@ -1,0 +1,19 @@
+# Mac files
+.DS_Store
+.Trashes
+
+# editor files
+*.sublime-project
+*.sublime-workspace
+.idea
+
+# other
+vendor/
+composer.lock
+composer.phar
+tmp/
+*.sqlite
+*.db
+*.ini
+phpunit.xml
+docs/api/phpdoc-cache*

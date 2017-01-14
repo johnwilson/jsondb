@@ -1,0 +1,19 @@
+{
+	"name": "johnwilson/jsondb",
+	"type": "library",
+	"description": "JSON document db abstraction layer over MySQL",
+	"keywords": ["json", "database", "nosql", "persistence", "schemaless"],
+	"license": "MIT",
+	"authors": [
+		{"name": "John Wilson", "email": "wilsonfiifi@gmail.com"}
+	],
+    "require": {
+		"illuminate/database": "5.2",
+		"php": ">=5.4"
+	},
+    "autoload": {
+    	"psr-4": {
+    		"IBT\\JsonDB\\": "src"
+    	}
+    }
+}
