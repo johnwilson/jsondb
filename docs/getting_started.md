@@ -6,18 +6,10 @@
 composer init --require="johnwilson/jsondb"
 ```
 
-**Don't forget to update configuration file to suit your environment** `vendor/johnwilson/jsondb/config/config.php`
-
 ## Call autoloader
 
 ```PHP
 require_once __DIR__ . '/vendor/autoload.php';
-```
-
-## Require the bootstrap file
-
-```PHP
-require_once __DIR__ . '/vendor/johnwilson/jsondb/jsondb.php';
 ```
 
 ## Import the relevant namespaces as required:

@@ -10,23 +10,21 @@ JSONDb is a PHP database abstraction library for MySQL which allows you to easil
 
 ## Quick Start
 
-* Update configuration data in `vendor/johnwilson/jsondb/config/config.php`.
-* Write your code:
-
 ```PHP
 
 // Autoload
 require_once __DIR__ . '/vendor/autoload.php';
-
-// bootstrap
-require_once __DIR__ . '/vendor/johnwilson/jsondb/jsondb.php';
 
 // import namespace
 use IBT\JsonDB\Client;
 use IBT\JsonDB\Collection;
 
 // create client and initialize database
-$c = new Client();
+$c = new Client([
+    'database' => 'database',
+    'username' => 'username',
+    'password' => 'password'
+]);
 $c->setup();
 
 // create collection

@@ -4,7 +4,7 @@ This tutorial will get you up and running with JsonDB by performing basic CRUD (
 
 ## Preparation
 
-If you've setup your project according to the guidelines in the [getting started](https://github.com/johnwilson/jsondb/blob/master/docs/getting_started.md) section, you should be ready to follow this tutorial. Make sure you've edited the configuration file `vendor/johnwilson/jsondb/config/config.php` to suit your environment.
+If you've setup your project according to the guidelines in the [getting started](https://github.com/johnwilson/jsondb/blob/master/docs/getting_started.md) section, you should be ready to follow this tutorial.
 
 The following code will get you ready to run your CRUD operations
 
@@ -14,15 +14,16 @@ The following code will get you ready to run your CRUD operations
 // Autoload
 require_once __DIR__ . '/vendor/autoload.php';
 
-// bootstrap
-require_once __DIR__ . '/vendor/johnwilson/jsondb/jsondb.php';
-
 // import namespace
 use IBT\JsonDB\Client;
 use IBT\JsonDB\Collection;
 
 // create a new db client
-$c = new Client();
+$c = new Client([
+    'database' => 'database',
+    'username' => 'username',
+    'password' => 'password'
+]);
 
 // setup
 $c->setup();
