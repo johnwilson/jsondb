@@ -53,36 +53,26 @@ class Client {
 	/**
 	* Constructor, creates a new Client
 	*
-	* @param string $host
-	* @param int $port
-	* @param string $database Database name
-	* @param string $username
-	* @param string $password
-	* @param string $charset
-	* @param string $collation
+	* @param array $config
 	*/
-	public function __construct(
-			$host = 'localhost',
-			$port = 3306,
-			$database = '',
-			$username = '',
-			$password = '',
-			$charset = 'utf8',
-			$collation = 'utf8_unicode_ci'
-		) {
+	public function __construct($config = array()) {
 		// setup db connection
 		$capsule = new Capsule();
 
-		$config = [
+		// default configuration
+		$default = [
 			'driver' => env('DB_DRIVER', 'mysql'),
-			'host' => env('DB_HOST', $host),
-			'port' => env('DB_PORT', $port),
-			'database' => env('DB_DATABASE', $database),
-			'username' => env('DB_USERNAME', $username),
-			'password' => env('DB_PASSWORD', $password),
-			'charset' => env('DB_CHARSET', $charset),
-			'collation' => env('DB_COLLATION', $collation)
+			'host' => env('DB_HOST', 'localhost'),
+			'port' => env('DB_PORT', 3306),
+			'database' => env('DB_DATABASE', ''),
+			'username' => env('DB_USERNAME', ''),
+			'password' => env('DB_PASSWORD', ''),
+			'charset' => env('DB_CHARSET', 'utf8'),
+			'collation' => env('DB_COLLATION', 'utf8_unicode_ci')
 		];
+
+		// create final config
+		$config = array_merge($default, $config);
 
 		$capsule->addConnection($config);
 		$this->capsule = $capsule;
